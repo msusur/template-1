@@ -1,0 +1,15 @@
+
+version: 0.1
+environment_variables:
+  plaintext:
+    S3_BUCKET_NAME: "www.unichaintr.com"
+phases:
+  install:
+    commands:
+      - echo Uploading!
+      - aws s3 cp static s3://${S3_BUCKET_NAME} --recursive
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'static*'
+  discard-paths: yes
